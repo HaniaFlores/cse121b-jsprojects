@@ -42,12 +42,19 @@ function displayResults() {
     getTaxes();
     getTip();
     getTotal(); 
+
+    if (isNaN(results.billAmount) || results.billAmount == 0 || isNaN(results.tipAmount) || isNaN(results.salesTax) || results.salesTax == 0)
+    {
+        alert("Please insert valid values.")
+    }
+    else {
+        document.querySelector(".results").style.display = "block";
+        document.getElementById("subtotal").textContent = results.billAmount.toFixed(2);
+        document.getElementById("tax-amount").textContent = results.salesTax.toFixed(2);
+        document.getElementById("tip-amount").textContent = results.tipAmount.toFixed(2);
+        document.getElementById("total").textContent = results.total.toFixed(2);
+    }
     
-    document.querySelector(".results").style.display = "block";
-    document.getElementById("subtotal").textContent = results.billAmount.toFixed(2);
-    document.getElementById("tax-amount").textContent = results.salesTax.toFixed(2);
-    document.getElementById("tip-amount").textContent = results.tipAmount.toFixed(2);
-    document.getElementById("total").textContent = results.total.toFixed(2);
 }
 
 
